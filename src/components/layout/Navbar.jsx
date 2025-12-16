@@ -26,7 +26,13 @@ const Navbar = () => {
 
                     {/* CTA Button */}
                     <div className="hidden md:flex">
-                        <Button variant="default" size="default">Get Started</Button>
+                        <Button
+                            variant="default"
+                            size="default"
+                            onClick={() => window.open('https://workiee-manager-v1.web.app/', '_blank')}
+                        >
+                            Get Started
+                        </Button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -50,7 +56,12 @@ const Navbar = () => {
                         <a href="#pricing" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Pricing</a>
                         <a href="#resources" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Resources</a>
                         <div className="pt-4 pb-2">
-                            <Button className="w-full">Get Started</Button>
+                            <Button
+                                className="w-full"
+                                onClick={() => window.open('https://workiee-manager-v1.web.app/', '_blank')}
+                            >
+                                Get Started
+                            </Button>
                         </div>
                     </div>
                 </div>

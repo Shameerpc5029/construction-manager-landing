@@ -20,7 +20,10 @@ const BuildSmarter = () => {
                             Say goodbye to scattered spreadsheets and hello to real-time progress tracking, automated attendance, and precise inventory management. Take the first step towards a more organised and profitable business today.
                         </p>
 
-                        <button className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg shadow-green-600/20">
+                        <button
+                            className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-10 rounded-lg text-lg transition-transform hover:scale-105 shadow-lg shadow-green-600/20"
+                            onClick={() => window.open('https://workiee-manager-v1.web.app/', '_blank')}
+                        >
                             Get Started
                         </button>
                     </div>

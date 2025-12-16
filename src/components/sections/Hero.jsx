@@ -88,7 +88,11 @@ const Hero = () => {
                         </p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <Button size="lg" className="w-full sm:w-auto text-base bg-[#ff5733] hover:bg-[#e64a2e] text-white border-none shadow-orange-500/30">
+                            <Button
+                                size="lg"
+                                className="w-full sm:w-auto text-base bg-[#ff5733] hover:bg-[#e64a2e] text-white border-none shadow-orange-500/30"
+                                onClick={() => window.open('https://workiee-manager-v1.web.app/', '_blank')}
+                            >
                                 Start 14 Days Trial
                             </Button>
                         </div>

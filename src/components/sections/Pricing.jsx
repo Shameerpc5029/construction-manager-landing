@@ -75,9 +75,21 @@ const Pricing = () => {
                                 </div>
 
                                 {/* Description */}
-                                <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                                <p className="text-slate-600 leading-relaxed text-sm md:text-base mb-8">
                                     {plan.description}
                                 </p>
+
+                                <div className="mt-auto">
+                                    <button
+                                        className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${plan.popular
+                                            ? 'bg-green-600 text-white hover:bg-green-700 shadow-lg shadow-green-600/20'
+                                            : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                                            }`}
+                                        onClick={() => window.open('https://workiee-manager-v1.web.app/', '_blank')}
+                                    >
+                                        Start 14 days trail
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}
