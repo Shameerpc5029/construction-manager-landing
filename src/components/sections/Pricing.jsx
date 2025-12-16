@@ -4,35 +4,34 @@ import { Button } from '../common/Button';
 
 const plans = [
     {
-        name: "Hobby",
-        price: "07",
-        currency: "Coins",
-        period: "/ day",
-        description: "Perfect for personal projects.",
-        features: ["1 Team Member", "Project access provided", "Basic features", "Email support"],
+        name: "WEEKLY PASS",
+        coins: "07",
+        price: "₹199",
+        duration: "7 Days Access",
+        description: "Perfect for short-term projects or trial runs. Get full access to every feature including unlimited projects and team members for a week.",
         color: "bg-orange-500",
-        buttonVariant: "outline"
+        headerColor: "bg-orange-500",
+        popular: false
     },
     {
-        name: "Monthly",
-        price: "30",
-        currency: "Coins",
-        period: "/ month",
-        description: "Great for small teams.",
-        features: ["10 Team Members", "Unlimited projects", "Priority support", "Advanced reporting", "Cloud storage"],
-        color: "bg-primary", // Green
-        popular: true,
-        buttonVariant: "default"
+        name: "MOST POPULAR",
+        coins: "30",
+        price: "₹799",
+        duration: "30 Days Access",
+        description: "Our most popular choice. Enjoy uninterrupted access for a full month to keep your sites running smoothly without any limits.",
+        color: "bg-green-600",
+        headerColor: "bg-green-600",
+        popular: true
     },
     {
-        name: "Yearly",
-        price: "365",
-        currency: "Coins",
-        period: "/ year",
-        description: "Best for large organizations.",
-        features: ["Unlimited Team Members", "Full API access", "Dedicated account manager", "Custom integrations", "White labeling"],
+        name: "YEARLY PRO",
+        coins: "365",
+        price: "₹7,999",
+        duration: "365 Days Access",
+        description: "The best value for growing businesses. Secure a full year of hassle-free management and dedicated support while saving big.",
         color: "bg-blue-600",
-        buttonVariant: "outline"
+        headerColor: "bg-blue-600",
+        popular: false
     }
 ];
 
@@ -40,47 +39,45 @@ const Pricing = () => {
     return (
         <section id="pricing" className="py-20 lg:py-32 bg-slate-50">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-                        Simple Pay-As-You-Go Pricing
-                    </h2>
-                    <p className="text-lg text-slate-600">
-                        Choose the plan that best fits your construction needs.
-                    </p>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start pt-10">
                     {plans.map((plan, index) => (
                         <div
                             key={index}
-                            className={`relative bg-white rounded-2xl shadow-xl overflow-hidden border transition-all duration-300 hover:-translate-y-2 ${plan.popular ? 'border-primary ring-2 ring-primary/20' : 'border-slate-100 hover:shadow-2xl'}`}
+                            className={`relative bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${plan.popular ? 'md:-mt-10 md:mb-10 shadow-2xl z-10' : ''
+                                }`}
                         >
-                            {plan.popular && (
-                                <div className="absolute top-0 inset-x-0 h-1 bg-primary" />
-                            )}
-                            {/* Header Bar */}
-                            <div className={`h-2 w-full ${plan.color}`} />
+                            {/* Colored Header */}
+                            <div className={`${plan.headerColor} py-4 text-center`}>
+                                <h3 className="text-white font-bold tracking-wider text-sm md:text-base uppercase">
+                                    {plan.name}
+                                </h3>
+                            </div>
 
-                            <div className="p-8">
-                                <h3 className="text-lg font-bold text-slate-900 uppercase tracking-wider mb-2">{plan.name}</h3>
-                                <div className="flex items-baseline mb-4">
-                                    <span className="text-4xl font-extrabold text-slate-900">{plan.price}</span>
-                                    <span className="text-sm font-semibold text-slate-500 ml-1">{plan.currency}</span>
-                                </div>
-                                <p className="text-slate-500 text-sm mb-6">{plan.description}</p>
-
-                                <div className="space-y-4 mb-8">
-                                    {plan.features.map((feat, i) => (
-                                        <div key={i} className="flex items-start gap-3">
-                                            <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                                            <span className="text-sm text-slate-700">{feat}</span>
-                                        </div>
-                                    ))}
+                            <div className="p-8 flex-1 flex flex-col">
+                                {/* Coins Count */}
+                                <div className="flex items-end gap-2 mb-6 border-b border-gray-100 pb-6 border-dashed">
+                                    <span className="text-6xl md:text-7xl font-bold text-slate-900 leading-none">
+                                        {plan.coins}
+                                    </span>
+                                    <span className="text-xl md:text-2xl font-bold text-slate-900 mb-1">
+                                        Coins
+                                    </span>
                                 </div>
 
-                                <Button variant={plan.buttonVariant} className="w-full">
-                                    Choose Plan
-                                </Button>
+                                {/* Price & Duration */}
+                                <div className="mb-6">
+                                    <div className="text-2xl font-medium text-slate-700 mb-1">
+                                        {plan.price}
+                                    </div>
+                                    <div className="text-slate-500 font-medium">
+                                        {plan.duration}
+                                    </div>
+                                </div>
+
+                                {/* Description */}
+                                <p className="text-slate-600 leading-relaxed text-sm md:text-base">
+                                    {plan.description}
+                                </p>
                             </div>
                         </div>
                     ))}
