@@ -68,7 +68,7 @@ const FocusSection = () => {
                     </div>
 
                     {/* Right: Phone */}
-                    <div className="flex-1 w-full flex justify-center md:justify-end">
+                    <div className="flex-1 w-full flex justify-center md:justify-center">
                         <div className="relative w-[220px] sm:w-[280px] md:w-[320px]">
                             <img
                                 src={PhoneMockup}
