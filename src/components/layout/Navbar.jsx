@@ -20,8 +20,8 @@ const Navbar = () => {
                     <div className="hidden md:flex space-x-8">
                         <a href="#features" className="text-slate-600 hover:text-primary transition-colors font-medium">Features</a>
                         <a href="#solutions" className="text-slate-600 hover:text-primary transition-colors font-medium">Solutions</a>
-                        <a href="#resources" className="text-slate-600 hover:text-primary transition-colors font-medium">Resources</a>
                         <a href="#pricing" className="text-slate-600 hover:text-primary transition-colors font-medium">Pricing</a>
+                        <a href="#resources" className="text-slate-600 hover:text-primary transition-colors font-medium">Resources</a>
                     </div>
 
                     {/* CTA Button */}
@@ -48,6 +48,7 @@ const Navbar = () => {
                         <a href="#features" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Features</a>
                         <a href="#solutions" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Solutions</a>
                         <a href="#pricing" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Pricing</a>
+                        <a href="#resources" className="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Resources</a>
                         <div className="pt-4 pb-2">
                             <Button className="w-full">Get Started</Button>
                         </div>

@@ -20,7 +20,7 @@ const FocusSection = () => {
     ];
 
     return (
-        <section className="py-20 bg-white">
+        <section id="solutions" className="py-20 bg-white">
             <div className="container mx-auto px-4 md:px-0">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-20">
