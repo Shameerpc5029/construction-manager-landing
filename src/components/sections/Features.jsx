@@ -88,7 +88,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car7,
-        icon: <Boxes className="w-8 h-8 text-blue-600" />,
+        icon: <LayoutDashboard className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "settings",
