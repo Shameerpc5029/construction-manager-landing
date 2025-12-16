@@ -120,7 +120,7 @@ const Features = () => {
     }, []);
 
     return (
-        <section id="features" className="py-20 bg-slate-50 overflow-hidden">
+        <section id="features" className="py-20 lg:py-24 bg-slate-50 overflow-hidden">
             <div className="container mx-auto px-4 md:px-0 relative">
 
                 {/* Slider Window */}
@@ -135,15 +135,14 @@ const Features = () => {
 
 
 
-                                <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-24 w-full">
+                                <div className="flex flex-col xl:flex-row items-center justify-center gap-12 xl:gap-16 2xl:gap-20 w-full">
                                     {/* Left: Phone + Circles */}
-                                    <div className="relative flex-shrink-0">
+                                    <div className="relative flex-shrink-0 md:min-h-[450px] xl:min-h-[550px] 2xl:min-h-[600px] md:flex md:items-center md:justify-center xl:w-[650px] 2xl:w-[800px]">
                                         {/* Circles */}
                                         <div className="absolute inset-0 flex items-center justify-center z-0">
-                                            <div className={`absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full border ${item.borderColorInner}`} />
-                                            <div className={`absolute w-[250px] h-[250px] md:w-[350px] md:h-[350px] rounded-full border-2 ${item.borderColorInner}`} />
-                                            <div className={`absolute w-[300px] h-[3000px] md:w-[400px] md:h-[400px] rounded-full border-4 ${item.borderColorInner}`} />
-
+                                            <div className={`absolute w-[340px] h-[340px] md:w-[450px] md:h-[450px] xl:w-[450px] xl:h-[450px] 4xl:w-[400px] 4xl:h-[400px] rounded-full border-4 ${item.borderColorOuter}`} />
+                                            <div className={`absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] xl:w-[525px] xl:h-[525px] 2xl:w-[550px] 2xl:h-[550px] rounded-full border-2 ${item.borderColorOuter}`} />
+                                            <div className={`absolute w-[260px] h-[260px] md:w-[350px] md:h-[350px] rounded-full border ${item.borderColorInner}`} />
                                         </div>
 
                                         {/* Phone Mockup */}
@@ -157,7 +156,7 @@ const Features = () => {
                                     </div>
 
                                     {/* Right: Text */}
-                                    <div className="max-w-md flex flex-col items-start text-left px-4 md:px-20">
+                                    <div className="max-w-md flex flex-col items-center text-center xl:items-start xl:text-left px-4 xl:px-0 2xl:px-20">
                                         <div className="mb-2">
                                             {/* Logo Icon */}
                                             <div className="w-12 h-12  items-center justify-center mb-2">
