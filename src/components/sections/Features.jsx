@@ -207,13 +207,13 @@ const Features = () => {
                                     <div className="relative flex-shrink-0 md:min-h-[450px] xl:min-h-[550px] 2xl:min-h-[600px] md:flex md:items-center md:justify-center xl:w-[650px] 2xl:w-[800px]">
                                         {/* Circles */}
                                         <div className="absolute inset-0 flex items-center justify-center z-0">
-                                            <div className={`absolute w-[340px] h-[340px] md:w-[450px] md:h-[450px] xl:w-[450px] xl:h-[450px] 4xl:w-[400px] 4xl:h-[400px] rounded-full border-4 ${item.borderColorOuter}`} />
-                                            <div className={`absolute w-[300px] h-[300px] md:w-[450px] md:h-[450px] xl:w-[525px] xl:h-[525px] 2xl:w-[550px] 2xl:h-[550px] rounded-full border-2 ${item.borderColorOuter}`} />
-                                            <div className={`absolute w-[260px] h-[260px] md:w-[350px] md:h-[350px] rounded-full border ${item.borderColorInner}`} />
+                                            <div className={`absolute w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] md:w-[450px] md:h-[450px] xl:w-[450px] xl:h-[450px] 4xl:w-[400px] 4xl:h-[400px] rounded-full border-4 ${item.borderColorOuter}`} />
+                                            <div className={`absolute w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[450px] md:h-[450px] xl:w-[525px] xl:h-[525px] 2xl:w-[550px] 2xl:h-[550px] rounded-full border-2 ${item.borderColorOuter}`} />
+                                            <div className={`absolute w-[200px] h-[200px] sm:w-[260px] sm:h-[260px] md:w-[350px] md:h-[350px] rounded-full border ${item.borderColorInner}`} />
                                         </div>
 
                                         {/* Phone Mockup */}
-                                        <div className="relative z-10 w-[180px] md:w-[260px]">
+                                        <div className="relative z-10 w-[140px] sm:w-[180px] md:w-[260px]">
                                             <img
                                                 src={item.image}
                                                 alt={item.title}

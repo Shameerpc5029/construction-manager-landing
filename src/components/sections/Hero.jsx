@@ -24,7 +24,7 @@ const Hero = () => {
                         className="relative mx-auto lg:mr-auto order-2 lg:order-1"
                     >
                         {/* Phone Mockup */}
-                        <div className="relative z-10 w-[280px] md:w-[320px] mx-auto">
+                        <div className="relative z-10 w-[200px] sm:w-[280px] md:w-[320px] mx-auto">
                             <img
                                 src={PhoneMockup}
                                 alt="App Dashboard Mockup"
@@ -40,7 +40,7 @@ const Hero = () => {
                             alt="Alarm Clock"
                             animate={{ y: [0, -10, 0] }}
                             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            className="absolute -top-10 -left-10 w-24 md:w-32 z-20"
+                            className="absolute -top-10 -left-10 w-16 sm:w-24 md:w-32 z-20"
                         />
 
                         {/* Clipboard - Top Right */}
@@ -49,7 +49,7 @@ const Hero = () => {
                             alt="Clipboard"
                             animate={{ y: [0, -12, 0], rotate: [0, 5, 0] }}
                             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                            className="absolute top-0 -right-4 md:-right-12 w-20 md:w-28 z-0"
+                            className="absolute top-0 -right-4 md:-right-12 w-14 sm:w-20 md:w-28 z-0"
                         />
 
                         {/* Green Card - Middle Right */}
@@ -58,7 +58,7 @@ const Hero = () => {
                             alt="Status Card"
                             animate={{ x: [0, 10, 0] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-1/2 -right-16 md:-right-24 w-40 md:w-48 z-20 shadow-xl rounded-xl rotate-12"
+                            className="absolute top-1/2 -right-16 md:-right-24 w-28 sm:w-40 md:w-48 z-20 shadow-xl rounded-xl rotate-12"
                         />
 
                     </motion.div>

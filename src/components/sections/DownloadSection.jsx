@@ -32,14 +32,14 @@ const DownloadSection = () => {
                             className="transform transition-transform hover:scale-105"
                             onClick={(e) => handleComingSoon(e, 'App Store')}
                         >
-                            <img src={AppStoreBadge} alt="Download on the App Store" className="h-[54px] w-auto" />
+                            <img src={AppStoreBadge} alt="Download on the App Store" className="h-[42px] sm:h-[54px] w-auto" />
                         </a>
                         <a
                             href="#"
                             className="transform transition-transform hover:scale-105"
                             onClick={(e) => handleComingSoon(e, 'Google Play')}
                         >
-                            <img src={GooglePlayBadge} alt="Get it on Google Play" className="h-[54px] w-auto" />
+                            <img src={GooglePlayBadge} alt="Get it on Google Play" className="h-[42px] sm:h-[54px] w-auto" />
                         </a>
                     </div>
                 </div>
