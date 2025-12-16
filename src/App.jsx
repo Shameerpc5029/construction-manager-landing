@@ -4,6 +4,7 @@ import Hero from './components/sections/Hero';
 import Features from './components/sections/Features';
 import FocusSection from './components/sections/FocusSection';
 import Pricing from './components/sections/Pricing';
+import DownloadSection from './components/sections/DownloadSection';
 import Footer from './components/sections/Footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Features />
         <FocusSection />
         <Pricing />
+        <DownloadSection />
       </main>
       <Footer />
     </div>
