@@ -110,27 +110,83 @@ const features = [
 
 const Features = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isResetting, setIsResetting] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+    const extendedFeatures = [...features, { ...features[0], id: "clone" }];
 
     useEffect(() => {
+        if (isPaused) return;
         const timer = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % features.length);
-        }, 5000); // Change slide every 5 seconds
+            setCurrentIndex((prev) => {
+                if (prev === features.length) {
+                    return 1;
+                }
+                return prev + 1;
+            });
+        }, 3000);
 
         return () => clearInterval(timer);
-    }, []);
+    }, [isPaused]); // Depend on isPaused
+
+    // Handle seamless reset
+    const handleAnimationComplete = () => {
+        if (currentIndex === features.length) {
+            setIsResetting(true);
+            setCurrentIndex(0);
+        } else {
+            setIsResetting(false);
+        }
+    };
+
+    // Ensure transition turns back on after reset
+    useEffect(() => {
+        if (isResetting) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    setIsResetting(false);
+                });
+            });
+        }
+    }, [isResetting]);
+
+    const onDragEnd = (event, info) => {
+        const threshold = 50; // Drag threshold
+        if (info.offset.x < -threshold) {
+            // Dragged Left -> Next
+            setCurrentIndex(prev => prev === features.length ? 1 : prev + 1);
+        } else if (info.offset.x > threshold) {
+            // Dragged Right -> Prev
+            setCurrentIndex(prev => prev === 0 ? 0 : prev - 1);
+        }
+    };
 
     return (
         <section id="features" className="py-20 lg:py-24 bg-slate-50 overflow-hidden">
-            <div className="container mx-auto px-4 md:px-0 relative">
+            <div
+                className="container mx-auto px-4 md:px-0 relative"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={() => setIsPaused(true)}
+                onTouchEnd={() => setIsPaused(false)}
+            >
 
                 {/* Slider Window */}
                 <div className="overflow-hidden">
                     <motion.div
                         className="flex"
+                        drag="x"
+                        dragMomentum={false}
+                        onDragEnd={onDragEnd}
                         animate={{ x: `-${currentIndex * 100}%` }}
-                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        transition={{
+                            duration: isResetting ? 0 : 0.8,
+                            type: isResetting ? "tween" : "spring",
+                            stiffness: 200,
+                            damping: 25
+                        }}
+                        onAnimationComplete={handleAnimationComplete}
                     >
-                        {features.map((item, index) => (
+                        {extendedFeatures.map((item, index) => (
                             <div key={index} className="w-full flex-shrink-0 flex flex-col items-center justify-center py-10">
 
 
@@ -184,7 +240,7 @@ const Features = () => {
                         <button
                             key={idx}
                             onClick={() => setCurrentIndex(idx)}
-                            className={`h-3 rounded-full transition-all duration-300 ${idx === currentIndex ? "w-8 bg-blue-600" : "w-3 bg-slate-300 hover:bg-slate-400"
+                            className={`h-3 rounded-full transition-all duration-300 ${idx === currentIndex % features.length ? "w-8 bg-blue-600" : "w-3 bg-slate-300 hover:bg-slate-400"
                                 }`}
                             aria-label={`Go to slide ${idx + 1}`}
                         />
