@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Smartphone, Users, ClipboardCheck, LayoutDashboard } from 'lucide-react';
+import {
+    Activity,
+    Users,
+    Building2,
+    ListTodo,
+    Wrench,
+    Wallet,
+    Boxes,
+    Settings,
+    Clock,
+    LayoutDashboard
+} from 'lucide-react';
 
 // Assets
 import Car1 from '../../assets/carousel-1.svg';
@@ -23,7 +34,7 @@ const features = [
         borderColorOuter: "border-green-600",
         borderColorInner: "border-green-600",
         image: Car1,
-        icon: <Users className="w-6 h-6 text-blue-600" />,
+        icon: <Activity className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "employees",
@@ -32,7 +43,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car2,
-        icon: <LayoutDashboard className="w-6 h-6 text-blue-600" />,
+        icon: <Users className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "projects",
@@ -41,7 +52,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car3,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Building2 className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "tasks",
@@ -50,7 +61,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car4,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <ListTodo className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "tools",
@@ -59,7 +70,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car5,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Wrench className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "finance",
@@ -68,7 +79,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car6,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Wallet className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "materials",
@@ -77,7 +88,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car7,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Boxes className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "settings",
@@ -86,16 +97,16 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car8,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Settings className="w-8 h-8 text-blue-600" />,
     },
     {
-        id: "materials",
+        id: "materials-9", // Fixed duplicate ID
         title: "Materials: Track your inventory",
         description: "Monitor stock levels and track usage across all projects. Get instant low-stock alerts to never run out of essential materials.",
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car9,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Boxes className="w-8 h-8 text-blue-600" />,
     },
     {
         id: "attendance",
@@ -104,7 +115,7 @@ const features = [
         borderColorOuter: "border-orange-500",
         borderColorInner: "border-orange-500",
         image: Car10,
-        icon: <ClipboardCheck className="w-6 h-6 text-blue-600" />,
+        icon: <Clock className="w-8 h-8 text-blue-600" />,
     }
 ];
 
@@ -215,7 +226,7 @@ const Features = () => {
                                     <div className="max-w-md flex flex-col items-center text-center xl:items-start xl:text-left px-4 xl:px-0 2xl:px-20">
                                         <div className="mb-2">
                                             {/* Logo Icon */}
-                                            <div className="w-12 h-12  items-center justify-center mb-2">
+                                            <div className="w-16 h-16 flex items-center justify-center mb-4 bg-blue-50 rounded-2xl">
                                                 <div className="text-blue-600">
                                                     {item.icon}
                                                 </div>
