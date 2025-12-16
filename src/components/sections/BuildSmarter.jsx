@@ -5,7 +5,7 @@ import Pictures from '../../assets/Pictures.svg';
 const BuildSmarter = () => {
     return (
         <section className="py-20 lg:py-32 bg-slate-50 overflow-hidden">
-            <div className="container mx-auto px-4 lg:px-6">
+            <div className="container mx-auto px-6 md:px-16 lg:px-24">
                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
                     {/* Left Content */}
