@@ -24,11 +24,22 @@ const Pricing = () => {
                 // Determine styling based on index or plan properties
                 const styles = getPlanStyles(index);
 
+                // Calculate discount data
+                // Assuming original_price exists or we calculate it for demo
+                // If original_price is missing, we simulate it as price * 1.25 (20% off) for demo purposes
+                const priceValue = plan.price;
+                const originalPriceValue = plan.original_price || Math.round(priceValue * 1.25);
+                const discountPercentage = plan.discount_percentage || Math.round(((originalPriceValue - priceValue) / originalPriceValue) * 100);
+                const savedAmount = originalPriceValue - priceValue;
+
                 return {
                     id: plan.id,
                     name: plan.plan_name,
                     coins: plan.coin_amount.toString().padStart(2, '0'),
-                    price: `₹${plan.price}`,
+                    price: `₹${priceValue}`,
+                    originalPrice: `₹${originalPriceValue}`,
+                    discountPercentage: `${discountPercentage}% OFF`,
+                    savedAmount: `Save ₹${savedAmount}`,
                     duration: formatDuration(plan.plan_type),
                     description: plan.description,
                     color: styles.color,
@@ -97,6 +108,10 @@ const Pricing = () => {
                                 <h3 className="text-white font-bold tracking-wider text-sm md:text-base uppercase">
                                     {plan.name}
                                 </h3>
+                                {/* Discount Badge */}
+                                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-bold shadow-sm">
+                                    {plan.discountPercentage}
+                                </div>
                             </div>
 
                             <div className="p-8 flex-1 flex flex-col">
@@ -112,6 +127,14 @@ const Pricing = () => {
 
                                 {/* Price & Duration */}
                                 <div className="mb-6">
+                                    <div className="flex items-center gap-2 mb-1">
+                                        <span className="text-sm text-slate-400 line-through decoration-red-500/50 decoration-2">
+                                            {plan.originalPrice}
+                                        </span>
+                                        <span className="text-xs font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                                            {plan.savedAmount}
+                                        </span>
+                                    </div>
                                     <div className="text-2xl font-medium text-slate-700 mb-1">
                                         {plan.price}
                                     </div>
