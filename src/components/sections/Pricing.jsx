@@ -1,49 +1,95 @@
-import React from 'react';
-import { Check } from 'lucide-react';
-import { Button } from '../common/Button';
-
-const plans = [
-    {
-        name: "WEEKLY PASS",
-        coins: "07",
-        price: "₹199",
-        duration: "7 Days Access",
-        description: "Perfect for short-term projects or trial runs. Get full access to every feature including unlimited projects and team members for a week.",
-        color: "bg-orange-500",
-        headerColor: "bg-orange-500",
-        popular: false
-    },
-    {
-        name: "MOST POPULAR",
-        coins: "30",
-        price: "₹799",
-        duration: "30 Days Access",
-        description: "Our most popular choice. Enjoy uninterrupted access for a full month to keep your sites running smoothly without any limits.",
-        color: "bg-green-600",
-        headerColor: "bg-green-600",
-        popular: true
-    },
-    {
-        name: "YEARLY PRO",
-        coins: "365",
-        price: "₹7,999",
-        duration: "365 Days Access",
-        description: "The best value for growing businesses. Secure a full year of hassle-free management and dedicated support while saving big.",
-        color: "bg-blue-600",
-        headerColor: "bg-blue-600",
-        popular: false
-    }
-];
+import React, { useEffect, useState } from 'react';
+import { supabase } from '../../lib/supabaseClient';
 
 const Pricing = () => {
+    const [plans, setPlans] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        fetchPlans();
+    }, []);
+
+    const fetchPlans = async () => {
+        try {
+            const { data, error } = await supabase
+                .from('subscription_plans')
+                .select('*')
+                .eq('is_active', true)
+                .order('coin_amount', { ascending: true });
+
+            if (error) throw error;
+
+            // Transform data to match UI requirements
+            const transformedPlans = data.map((plan, index) => {
+                // Determine styling based on index or plan properties
+                const styles = getPlanStyles(index);
+
+                return {
+                    id: plan.id,
+                    name: plan.plan_name,
+                    coins: plan.coin_amount.toString().padStart(2, '0'),
+                    price: `₹${plan.price}`,
+                    duration: formatDuration(plan.plan_type),
+                    description: plan.description,
+                    color: styles.color,
+                    headerColor: styles.headerColor,
+                    popular: index === 1, // Highlight the middle plan as popular for now
+                };
+            });
+
+            setPlans(transformedPlans);
+        } catch (error) {
+            console.error('Error fetching plans:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const formatDuration = (type) => {
+        const typeMap = {
+            '1_month': '30 Days Access',
+            '3_months': '90 Days Access',
+            '6_months': '180 Days Access',
+            '12_months': '365 Days Access'
+        };
+        return typeMap[type] || type.replace('_', ' ');
+    };
+
+    const getPlanStyles = (index) => {
+        const styles = [
+            { color: 'bg-orange-500', headerColor: 'bg-orange-500' },
+            { color: 'bg-green-600', headerColor: 'bg-green-600' },
+            { color: 'bg-blue-600', headerColor: 'bg-blue-600' },
+            { color: 'bg-purple-600', headerColor: 'bg-purple-600' },
+        ];
+        return styles[index % styles.length];
+    };
+
+    if (loading) {
+        return (
+            <section id="pricing" className="py-20 lg:py-32 bg-slate-50">
+                <div className="container mx-auto px-4 text-center">
+                    <div className="animate-pulse space-y-4">
+                        <div className="h-4 bg-slate-200 rounded w-1/4 mx-auto"></div>
+                        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-10">
+                            {[1, 2, 3].map((i) => (
+                                <div key={i} className="h-96 bg-slate-200 rounded-2xl"></div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section id="pricing" className="py-20 lg:py-32 bg-slate-50">
             <div className="container mx-auto px-4 md:px-6">
-                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start pt-10">
+                <div className="flex flex-wrap justify-center gap-8 max-w-6xl mx-auto items-start pt-10">
                     {plans.map((plan, index) => (
                         <div
-                            key={index}
-                            className={`relative bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${plan.popular ? 'md:-mt-10 md:mb-10 shadow-2xl z-10' : ''
+                            key={plan.id}
+                            className={`relative bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl w-full md:w-[calc((100%-4rem)/3)] ${plan.popular ? 'md:-mt-10 md:mb-10 shadow-2xl z-10' : ''
                                 }`}
                         >
                             {/* Colored Header */}
@@ -79,7 +125,7 @@ const Pricing = () => {
                                     {plan.description}
                                 </p>
 
-                                <div className="mt-auto">
+                                {/* <div className="mt-auto">
                                     <button
                                         className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${plan.popular
                                             ? 'bg-green-600 text-white hover:bg-green-700 shadow-lg shadow-green-600/20'
@@ -89,7 +135,7 @@ const Pricing = () => {
                                     >
                                         Start 14 days trail
                                     </button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     ))}
